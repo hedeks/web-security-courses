@@ -10,5 +10,4 @@
 <script setup>
 
 const articles = await queryContent('courses').only(['_id', '_path', "title"]).find();
-console.log(articles)
 </script>

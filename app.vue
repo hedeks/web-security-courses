@@ -6,10 +6,12 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 </script>
 
 <style>
+@import url('https://fonts.cdnfonts.com/css/hero-new');
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;
@@ -42,7 +44,10 @@
 }
 
 body {
-  font-family: "P22 Underground";
+  /* font-family: "P22 Underground"; */
+  overflow-y: scroll;
+  @apply scroll-smooth;
+  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 ::selection {

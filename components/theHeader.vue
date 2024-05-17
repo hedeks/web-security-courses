@@ -20,11 +20,12 @@ const links = [{
 </script>
 
 <template>
-  <div class="flex px-10 flex-wrap items-center justify-between border-b dark:border-gray-700 border-gray-200">
+  <div class="flex px-10 gap-2 flex-wrap items-center md:justify-between justify-center border-b dark:border-gray-700 border-gray-200">
+    <theSiteLogo />
     <UHorizontalNavigation :links="links"
       :ui="{ label: 'xl:text-lg', active: 'after:bg-gray-500 dark:after:bg-gray-500-inverted' }"
       class="text-lg flex w-fit justify-center" />
-    <div class="flex items-center justify-between gap-5">
+    <div class="flex p-1 items-center justify-between gap-5">
       <theThemeChanger />
       <theProfileIcon />
     </div>

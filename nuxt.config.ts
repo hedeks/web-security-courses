@@ -16,19 +16,29 @@ export default defineNuxtConfig({
       ],
     }
   },
+  extends: ['@nuxt/ui-pro'],
   modules: ['@nuxt/ui', "@nuxt/content", "@nuxtjs/tailwindcss", '@nuxtjs/color-mode'],
   colorMode: {
-    classSuffix: ''
+    classSuffix: 'dark'
   },
   content: {
     markdown: {
-      anchorLinks: false
+      anchorLinks: true
     },
     highlight: {
       theme: {
         default: "github-light",
         dark: "dark-plus"
-      }
+      },
+      langs: [
+        "php",
+        "sql",
+        "html",
+        "js",
+        "ts",
+        "vue",
+        "http"
+      ]
     }
   }
 })
