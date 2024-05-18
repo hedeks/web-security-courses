@@ -16,14 +16,13 @@ export default defineNuxtConfig({
       ],
     }
   },
-  extends: ['@nuxt/ui-pro'],
   modules: ['@nuxt/ui', "@nuxt/content", "@nuxtjs/tailwindcss", '@nuxtjs/color-mode'],
   colorMode: {
     classSuffix: 'dark'
   },
   content: {
     markdown: {
-      anchorLinks: true
+      anchorLinks: false
     },
     highlight: {
       theme: {

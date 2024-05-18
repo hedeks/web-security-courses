@@ -1,5 +1,14 @@
 <script setup lang="ts">
-
+const header = ref();
+let headerHeight = ref<Number>(0);
+const updateVar = ()=>{
+  headerHeight.value = header.value.clientHeight;
+  document.body.style.setProperty('--header-height', `${headerHeight.value}px`)
+}
+onMounted(()=>{
+  updateVar();
+});
+window?.addEventListener("resize", updateVar);
 const links = [{
   label: 'Главная',
   icon: 'i-heroicons-home',
@@ -16,11 +25,15 @@ const links = [{
   label: 'Профиль',
   icon: "i-heroicons-user",
   to: "/profile"
+},{
+  label: 'Авторизация',
+  icon: "i-heroicons-lock-closed",
+  to: "/auth"
 }]
 </script>
 
 <template>
-  <div class="flex px-10 gap-2 flex-wrap items-center md:justify-between justify-center border-b dark:border-gray-700 border-gray-200">
+  <div id="header" ref="header" class="flex px-10 gap-2 flex-wrap items-center md:justify-between justify-center border-b dark:border-gray-700 border-gray-200">
     <theSiteLogo />
     <UHorizontalNavigation :links="links"
       :ui="{ label: 'xl:text-lg', active: 'after:bg-gray-500 dark:after:bg-gray-500-inverted' }"
@@ -31,3 +44,9 @@ const links = [{
     </div>
   </div>
 </template>
+
+<style>
+:root {
+  --header-height: 65px;
+}
+</style>

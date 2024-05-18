@@ -34,15 +34,6 @@
   filter: blur(0.1rem);
 }
 
-@font-face {
-  font-family: "P22 Underground";
-  src: local("P22 Underground CY Pro Light"),
-    local("P22-Underground-CY-Pro-Light"),
-    url("/P22UndergroundCYProLight.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
-
 body {
   /* font-family: "P22 Underground"; */
   overflow-y: scroll;
