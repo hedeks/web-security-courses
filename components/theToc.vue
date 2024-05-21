@@ -1,14 +1,14 @@
 <template>
-    <div class="flex flex-col lg:border-l dark:border-gray-600 pl-8 lg:sticky h-fit pb-8">
-        <p class="text-xl text-black dark:text-white">Содержание</p>
-        <div class="flex flex-col gap-2 dark:text-gray-300">
-            <div class="flex flex-col gap-2" v-for="item in props.links" :key="item.id">
-                <span
-                    class="scroll-m-40 text-base cursor-pointer hover:text-gray-300 dark:hover:text-gray-600 transition-all:ease duration-200"
+    <div class="flex flex-col lg:sticky h-fit pb-8">
+        <p class="text-sm tracking-widest font-bold text-black dark:text-white uppercase">Содержание</p>
+        <div class="flex flex-col dark:text-gray-300">
+            <div class="flex flex-col" v-for="item in links" :key="item.id">
+                <span :data-title="item.id"
+                    class="toc px-3 p-1 lg:border-l-2 dark:border-gray-600 scroll-m-40 text-sm cursor-pointer hover:text-gray-300 dark:hover:text-gray-600 transition-all:ease duration-300"
                     @click="customScroll(item.id)">{{ item.text }}</span>
-                <div v-if="item.children" class="flex flex-col gap-2 px-2">
-                    <span
-                        class="scroll-m-40 text-sm cursor-pointer hover:text-gray-300 dark:hover:text-gray-600 transition-all:ease duration-200"
+                <div v-if="item.children" class="flex flex-col">
+                    <span :data-title="child.id"
+                        class="toc lg:border-l-2 p-1 px-5 dark:border-gray-600 scroll-m-40 text-sm cursor-pointer hover:text-gray-300 dark:hover:text-gray-600 transition-all:ease duration-300"
                         v-for="child in item.children" @click="customScroll(child.id)">{{ "• " + child.text }}</span>
                 </div>
             </div>
@@ -18,13 +18,35 @@
 
 <script setup lang="ts">
 const route = useRoute();
-const props: any = defineProps({
-    links: Array
-});
+const props = defineProps<{
+    links?: any,
+    activeID?: string
+}>();
 const customScroll = (id: string) => {
-    const elem = document.getElementById(id);
-    const headerHeight = document.getElementById('header')?.clientHeight;
-    const offset = elem.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    const elem: HTMLElement = document.getElementById(id) as HTMLElement;
+    const headerHeight = document.getElementById('header')?.clientHeight as number;
+    const offset = elem.getBoundingClientRect().top + scrollY - headerHeight;
     window.scrollTo({ top: offset, behavior: 'smooth' });
 }
+const activeElem = computed(() => {
+    return props.activeID
+})
+watch(activeElem, () => {
+    if (activeElem.value !== "") {
+        const elements: HTMLCollectionOf<Element> = document.getElementsByClassName("toc");
+        for (let element of elements) {
+            if (element.getAttribute('data-title') === activeElem.value){
+                element.classList.add('selectedToc')
+            } else {
+                element.classList.remove('selectedToc')
+            }
+        }
+    }
+})
 </script>
+
+<style scoped>
+.selectedToc {
+    @apply border-l-2 border-gray-950 dark:border-gray-200 bg-gray-200 dark:bg-gray-800;
+}
+</style>

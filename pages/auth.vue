@@ -32,7 +32,7 @@ const error = ref(true)
 <!-- eslint-disable vue/singleline-html-element-content-newline -->
 <template>
     <UCard class="max-w-sm w-full mx-auto">
-        <UAuthForm :fields="fields" :validate="validate" title="С возвращением!" icon="i-heroicons-lock-closed"
+        <!-- <UAuthForm :fields="fields" :validate="validate" title="С возвращением!" icon="i-heroicons-lock-closed"
             :loading="false" :ui="{
                 base: 'text-center', default: {
                     submitButton: {
@@ -48,6 +48,6 @@ const error = ref(true)
             <template #validation>
                 <UAlert color="gray" icon="i-heroicons-information-circle-20-solid" title="Ошибка входа" />
             </template>
-        </UAuthForm>
+        </UAuthForm> -->
     </UCard>
 </template>

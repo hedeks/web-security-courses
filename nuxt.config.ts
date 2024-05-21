@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxt/ui', "@nuxt/content", "@nuxtjs/tailwindcss", '@nuxtjs/color-mode'],
   colorMode: {
-    classSuffix: 'dark'
+    classSuffix: 'selector'
   },
   content: {
     markdown: {

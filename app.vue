@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLayout>
-      <NuxtPage />
+      <NuxtPage/>
     </NuxtLayout>
   </div>
 </template>
@@ -10,7 +10,6 @@
 </script>
 
 <style>
-@import url('https://fonts.cdnfonts.com/css/hero-new');
 
 .page-enter-active,
 .page-leave-active {
@@ -33,11 +32,9 @@
   opacity: 0;
   filter: blur(0.1rem);
 }
-
 body {
   /* font-family: "P22 Underground"; */
-  overflow-y: scroll;
-  @apply scroll-smooth;
+  overflow-y: scroll; 
   font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
