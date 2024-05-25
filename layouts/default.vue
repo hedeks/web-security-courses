@@ -1,7 +1,7 @@
 <template>
     <div class="container max-w-8xl mx-auto flex-col">
         <theHeader class="flex p-1 sticky top-0 bg-white dark:bg-gray-950 z-10" />
-        <main class="flex-col p-10 items-center justify-items-center">
+        <main class="main flex-col p-10 items-center justify-items-center ">
             <slot />
         </main>
         <theFooter class="flex p-1" />
@@ -10,3 +10,12 @@
 
 <script setup lang="ts">
 </script>
+
+<style>
+:root {
+    --footer-height: 93px;
+}
+.main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+</style>

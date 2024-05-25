@@ -3,7 +3,9 @@
         <h1 class="text-5xl mb-10">
            Все доступные лекции!
         </h1>
-        <theCourse v-for="article in articles" :key="article._id" :path="article._path" :title="article.title"/>
+        <div class="flex flex-wrap gap-5 items-center justify-center">
+            <theCourse v-for="article in articles" :key="article._id" :path="article._path" :title="article.title"/>
+        </div>
     </div>
 </template>
 

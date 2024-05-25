@@ -16,7 +16,7 @@ export default defineNuxtConfig({
       ],
     }
   },
-  modules: ['@nuxt/ui', "@nuxt/content", "@nuxtjs/tailwindcss", '@nuxtjs/color-mode'],
+  modules: ['@nuxt/ui', "@nuxt/content", "@nuxtjs/tailwindcss", '@nuxtjs/color-mode', '@nuxtjs/supabase'],
   colorMode: {
     classSuffix: 'selector'
   },
@@ -38,6 +38,11 @@ export default defineNuxtConfig({
         "vue",
         "http"
       ]
+    },
+  },
+  nitro: {
+    experimental: {
+      database: true
     }
   }
 })

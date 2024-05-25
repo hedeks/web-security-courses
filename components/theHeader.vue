@@ -28,7 +28,7 @@ const links = [{
 },{
   label: 'Авторизация',
   icon: "i-heroicons-lock-closed",
-  to: "/auth"
+  to: "/login"
 }]
 </script>
 

@@ -1,75 +1,15 @@
-# Nuxt 3 Minimal Starter
+# My first really close to serious project on nuxt
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Technologies
 
-## Setup
+1. "nuxt": "^3.11.2";
+2. "@nuxt/ui": "^2.16.0";
+3. "@supabase/supabase-js": "^2.43.4";
+4. "nuxt": "^3.11.2";
+5. "vue": "^3.4.21";
+6. "vue-router": "^4.3.0";
+7. "@nuxt/content": "^2.12.1";
+8. "@nuxtjs/tailwindcss": "^6.12.0";
+9. "@tailwindcss/typography": "^0.5.13".
 
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+![Скриншот](/screen.png "screen1")
