@@ -4,7 +4,7 @@
 
 1. "nuxt": "^3.11.2";
 2. "@nuxt/ui": "^2.16.0";
-3. "@supabase/supabase-js": "^2.43.4";
+3. "@nuxtjs/supabase": "^1.2.2";
 4. "nuxt": "^3.11.2";
 5. "vue": "^3.4.21";
 6. "vue-router": "^4.3.0";
@@ -12,4 +12,4 @@
 8. "@nuxtjs/tailwindcss": "^6.12.0";
 9. "@tailwindcss/typography": "^0.5.13".
 
-![Скриншот](/screen.png "screen1")
+![Скриншот](/public/screen.png "screen1")
