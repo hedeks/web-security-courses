@@ -4,11 +4,11 @@
         <div class="flex flex-col dark:text-gray-300">
             <div class="flex flex-col" v-for="item in links" :key="item.id">
                 <span :data-title="item.id"
-                    class="toc px-3 p-1 lg:border-l-2 dark:border-gray-600 scroll-m-40 text-sm cursor-pointer hover:text-gray-300 dark:hover:text-gray-600 transition-all:ease duration-300"
+                    class="toc px-3 p-1 lg:border-l-2 dark:border-gray-600 scroll-m-40 text-sm cursor-pointer  transition-all:ease duration-300"
                     @click="customScroll(item.id)">{{ item.text }}</span>
                 <div v-if="item.children" class="flex flex-col">
                     <span :data-title="child.id"
-                        class="toc lg:border-l-2 p-1 px-5 dark:border-gray-600 scroll-m-40 text-sm cursor-pointer hover:text-gray-300 dark:hover:text-gray-600 transition-all:ease duration-300"
+                        class="toc lg:border-l-2 p-1 px-5 dark:border-gray-600 scroll-m-40 text-sm cursor-pointer transition-all:ease duration-300"
                         v-for="child in item.children" @click="customScroll(child.id)">{{ "• " + child.text }}</span>
                 </div>
             </div>

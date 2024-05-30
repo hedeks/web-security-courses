@@ -7,13 +7,16 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "scp -r .output/* j30132428@efd1ef3c9c95.hosting.myjino.ru:~/domains/web-courses-vguit.hedeks.ru  && ssh j30132428@efd1ef3c9c95.hosting.myjino.ru \"mkdir -p ~/domains/web-courses-vguit.hedeks.ru/tmp && touch ~/domains/web-courses-vguit.hedeks.ru/tmp/restart.txt\""
   },
   "dependencies": {
     "@nuxt/ui": "^2.16.0",
+    "@pinia/nuxt": "^0.5.1",
     "@supabase/supabase-js": "^2.43.4",
     "bcrypt": "^5.1.1",
     "nuxt": "^3.11.2",
+    "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },

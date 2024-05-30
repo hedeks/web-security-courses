@@ -1,5 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  supabase: {
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      include: undefined,
+      exclude: ['/', '/about'],
+      cookieRedirect: false,
+    },
+  },
   devtools: { enabled: true },
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
@@ -16,7 +25,7 @@ export default defineNuxtConfig({
       ],
     }
   },
-  modules: ['@nuxt/ui', "@nuxt/content", "@nuxtjs/tailwindcss", '@nuxtjs/color-mode', '@nuxtjs/supabase'],
+  modules: ['@nuxt/ui', '@pinia/nuxt', "@nuxt/content", "@nuxtjs/tailwindcss", '@nuxtjs/color-mode', '@nuxtjs/supabase'],
   colorMode: {
     classSuffix: 'selector'
   },
@@ -44,5 +53,8 @@ export default defineNuxtConfig({
     experimental: {
       database: true
     }
-  }
+  },
+  pinia: {
+    storesDirs: ['./stores/**', './custom-folder/stores/**'],
+  },
 })
