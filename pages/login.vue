@@ -7,20 +7,21 @@ const password: Ref<HTMLInputElement> = ref() as Ref<HTMLInputElement>;
 const isSignup: Ref<Boolean> = ref(false);
 const supabase = useSupabaseClient();
 const errorMain = ref<AuthError | null>(null);
-const isLoading = ref<Boolean>(false)
+const isLoading: Ref<Boolean> = ref(false)
 const signUp = async (): Promise<void> => {
     isLoading.value = true;
     const { data: { user: user }, error } = await supabase.auth.signUp({
         email: email.value.value,
-        password: password.value.value
+        password: password.value.value,
     });
     isLoading.value = false;
     if (user) {
         toast.add({ title: `Подтвердите свой email ${user.email}` });
-        navigateTo('/courses');
     }
     if (error) {
         errorMain.value = error;
+        store.$state.isLoggedIn = false;
+        store.$state.userInfo = {};
     }
 }
 
@@ -33,12 +34,14 @@ const login = async (): Promise<void> => {
     isLoading.value = false;
     if (user) {
         toast.add({ title: `Вы вошли в аккаунт ${user.email}` });
-        navigateTo('/courses');
+        navigateTo('/profile');
         store.$state.isLoggedIn = true;
         store.$state.userInfo = user;
     }
     if (error) {
         errorMain.value = error;
+        store.$state.isLoggedIn = false;
+        store.$state.userInfo = {};
     }
 
 
@@ -58,12 +61,15 @@ const login = async (): Promise<void> => {
                 <form @submit.prevent="isSignup ? signUp() : login()" class="flex flex-col gap-2 items-center">
                     <input placeholder="почта email" type="text" ref="email" class="input">
                     <input placeholder="пароль" type="password" ref="password" class="input">
-                    <button type="submit"
-                        class="uppercase tracking-widest font-semibold px-4 mt-5 py-2 rounded bg-gray-200 hover:bg-gray-500 hover:text-gray-200 border dark:bg-gray-950 dark:text-white dark:border-gray-200 dark:hover:bg-gray-200 dark:hover:text-black transition-ease duration-300">
-                        Подтвердить
-                    </button>
+                    <UButton block color="black" variant="solid" square type="submit" class="mt-7 shadow" :ui="{base: 'focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0'}"
+                        label="Подтвердить" :loading="isLoading">
+                        <template #trailing>
+                            <UIcon name="i-heroicons-arrow-up-circle" class="w-5 h-5" />
+                        </template>
+                    </UButton>
+
                 </form>
-                <div v-if="errorMain" class="mt-10 bg-red-500 rounded p-2 border shadow-sm text-center text-white">
+                <div v-if="errorMain" class="alert mt-5">
                     {{ errorMain.message }}</div>
             </div>
             <template #footer>
@@ -74,11 +80,34 @@ const login = async (): Promise<void> => {
                 </div>
             </template>
         </UCard>
+        <span v-if="!store.$state.isLoggedIn" class="alert mt-5">Просматривать
+            курсы и профиль можно только войдя в аккаунт</span>
     </div>
 </template>
 
 <style scoped>
 .input {
     @apply shadow-sm rounded bg-white dark:bg-gray-800 border dark:border-gray-600 px-2 py-1 outline-none focus:border-black dark:focus:border-white transition-all duration-300;
+}
+
+@keyframes wrong {
+    0% {
+        transform: translateX(5px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateX(-5px);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.alert {
+    @apply text-center border border-red-500 text-red-900 dark:text-red-400 dark:bg-red-950 bg-red-50 p-5 rounded shadow uppercase tracking-widest font-mono font-bold transition ease-linear duration-300 animate-slide;
 }
 </style>

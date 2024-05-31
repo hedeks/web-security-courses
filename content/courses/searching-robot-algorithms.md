@@ -2,6 +2,10 @@
 title: "Лекция 1. Алгоритмы поисковых роботов"
 meta: "lection-1"
 metaTitle: "Алгоритмы поисковых роботов"
+name: "searching-robot-algorithms"
+description: "В данном курсе рассматриваются алгоритмы поисковый роботов"
+courseID: 0
+imgPath: "/searching-robots.png"
 ---
 
 # Лекция 1. Алгоритмы поисковых роботов

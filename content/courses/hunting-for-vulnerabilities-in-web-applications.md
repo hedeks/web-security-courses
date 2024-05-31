@@ -2,6 +2,10 @@
 title: "Лекция 4. Охота за уязвимостями в веб-приложениях"
 meta: "lection-4"
 metaTitle: "Охота за уязвимостями в веб-приложениях"
+name: "hunting-for-vulnerabilities-in-web-applications"
+description: "В данном курсе рассматриватся основные угрозы для веб - приложения"
+courseID: 3
+imgPath: "/hacker.jpg"
 ---
 
 # Лекция 4. Уязвимости

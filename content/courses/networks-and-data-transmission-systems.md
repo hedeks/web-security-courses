@@ -2,6 +2,10 @@
 title: "Лекция 2. Сети и системы передачи данных"
 meta: "lection-2"
 metaTitle: "Сети и системы передачи данных"
+name: "networks-and-data-transmission-systems"
+description: "В этом курсе рассмотрены основы сетей и протоколов передачи данных"
+courseID: 1
+imgPath: "/network.jpg"
 ---
 
 # Лекция 2. Сети и системы передачи данных
