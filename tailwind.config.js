@@ -12,6 +12,9 @@ module.exports = {
           '50%': {transform: 'translateX(-5px)'},
           '100%': {transform: 'translateX(0)'},
         }
+      },
+      boxShadow: {
+        'darkShadow': '0 1px 3px 0 rgb(255 255 255 / 0.5), 0 1px 2px -1px rgb(255 255 255 / 0.5)',
       }
     },
   },

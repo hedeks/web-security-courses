@@ -50,7 +50,7 @@ const login = async (): Promise<void> => {
 
 <template>
     <div class="container m-auto w-full h-full flex flex-col items-center justify-center">
-        <UCard class="max-w-sm w-80" :ui="{ background: 'bg-white dark:bg-gray-950' }">
+        <UCard class="max-w-sm w-80 dark:shadow-darkShadow" :ui="{ background: 'bg-white dark:bg-gray-950' }">
             <template #header>
                 <div class="h-3 flex items-center justify-center">
                     <span v-if="isSignup">Регистрация</span>
@@ -61,7 +61,7 @@ const login = async (): Promise<void> => {
                 <form @submit.prevent="isSignup ? signUp() : login()" class="flex flex-col gap-2 items-center">
                     <input placeholder="почта email" type="text" ref="email" class="input">
                     <input placeholder="пароль" type="password" ref="password" class="input">
-                    <UButton block color="black" variant="solid" square type="submit" class="mt-7 shadow" :ui="{base: 'focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0'}"
+                    <UButton block color="black" variant="solid" square type="submit" class="mt-7 shadow dark:shadow-darkShadow" :ui="{base: 'focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0'}"
                         label="Подтвердить" :loading="isLoading">
                         <template #trailing>
                             <UIcon name="i-heroicons-arrow-up-circle" class="w-5 h-5" />
@@ -87,7 +87,7 @@ const login = async (): Promise<void> => {
 
 <style scoped>
 .input {
-    @apply shadow-sm rounded bg-white dark:bg-gray-800 border dark:border-gray-600 px-2 py-1 outline-none focus:border-black dark:focus:border-white transition-all duration-300;
+    @apply dark:shadow-darkShadow shadow-sm rounded bg-white dark:bg-gray-800 border dark:border-gray-600 px-2 py-1 outline-none focus:border-black dark:focus:border-white transition-all duration-300;
 }
 
 @keyframes wrong {

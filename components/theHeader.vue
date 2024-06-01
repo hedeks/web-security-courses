@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const header = ref();
+let header = ref<HTMLElement>();
 let headerHeight = ref<Number>(0);
 const updateVar = ()=>{
-  headerHeight.value = header.value.clientHeight;
+  if(header.value) {
+    headerHeight.value = header.value.clientHeight;
+  }
   document.body.style.setProperty('--header-height', `${headerHeight.value}px`)
 }
 onMounted(()=>{
@@ -13,11 +15,13 @@ const links = [{
   label: 'Главная',
   icon: 'i-heroicons-home',
   to: '/'
-}, {
-  label: 'О сайте',
-  icon: 'i-heroicons-document',
-  to: "/about"
-}, {
+}, 
+// {
+  // label: 'О сайте',
+  // icon: 'i-heroicons-document',
+  // to: "/about"
+// }, 
+{
   label: 'Курсы',
   icon: 'i-heroicons-book-open',
   to: '/courses'
@@ -33,12 +37,12 @@ const links = [{
 </script>
 
 <template>
-  <div id="header" ref="header" class="flex px-10 gap-2 flex-wrap items-center md:justify-between justify-center border-b dark:border-gray-700 border-gray-200">
-    <theSiteLogo />
+  <div id="header" ref="header" class="flex flex-wrap px-2 lg:grid lg:grid-cols-3 gap-2 items-center justify-center border-b dark:border-gray-700 border-gray-200">
+    <theSiteLogo class="col-span-1"/>
     <UHorizontalNavigation :links="links"
       :ui="{ label: 'xl:text-lg', active: 'after:bg-gray-500 dark:after:bg-gray-500-inverted' }"
-      class="text-lg flex w-fit justify-center" />
-    <div class="flex p-1 items-center justify-between gap-5">
+      class="text-lg flex flex-wrap w-fit justify-self-center col-span-1" />
+    <div class="flex items-center w-fit gap-4 col-span-1 justify-self-end">
       <theThemeChanger />
       <theProfileIcon />
     </div>

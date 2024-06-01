@@ -3,7 +3,7 @@ const user = useSupabaseUser();
 useHead({
     title: "Панель управления тестами" 
 });
-
+const client = useSupabaseClient();
 </script>
 
 <template>

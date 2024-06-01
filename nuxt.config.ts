@@ -1,3 +1,5 @@
+import { _light } from "#tailwind-config/theme/fontWeight";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   supabase: {
@@ -10,6 +12,35 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
+  nuxtMarkdownRender: {
+    // as: 'article', // default 'div'
+    // component: 'NotNuxtMarkdown', // false to disable Nuxt's auto import
+    options: {
+      html: false // default true
+    },
+    plugins: {
+      mdc: false, // default mdc options object
+      anchor: {
+        level: 2 // default 1
+      },
+      shiki: {
+        themes: {
+          light: "github-light",
+          dark: "dark-plus"
+        },
+        langs: [
+          "php",
+          "sql",
+          "html",
+          "js",
+          "ts",
+          "vue",
+          "http"
+        ]
+      }
+    },
+    vueRuntimeCompiler: false // default true
+  },
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
     head: {
@@ -25,13 +56,13 @@ export default defineNuxtConfig({
       ],
     }
   },
-  modules: ['@nuxt/ui', '@pinia/nuxt', "@nuxt/content", "@nuxtjs/tailwindcss", '@nuxtjs/color-mode', '@nuxtjs/supabase'],
+  modules: ['@nuxt/ui', '@pinia/nuxt', "@nuxt/content", "@nuxtjs/tailwindcss", 'nuxt-markdown-render', '@nuxtjs/color-mode', '@nuxtjs/supabase'],
   colorMode: {
     classSuffix: 'selector'
   },
   content: {
     markdown: {
-      anchorLinks: false
+      anchorLinks: false,
     },
     highlight: {
       theme: {
@@ -59,5 +90,10 @@ export default defineNuxtConfig({
   },
   imports: {
     dirs: ['types/*.ts', 'store/*.ts', 'types/**/*.ts'],
-  }
+  },
+  components: [{
+    path: '~/components',
+    pathPrefix: false,
+  }],
+
 })

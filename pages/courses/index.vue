@@ -1,18 +1,29 @@
 <template>
     <div class="flex flex-col flex-wrap gap-5 items-center justify-center">
         <h1 class="text-5xl mb-10">
-           Список доступных курсов:
+            Список доступных курсов:
         </h1>
         <div class="flex flex-wrap gap-8 items-start justify-center h-fit">
-            <theCourse v-for="article in articles" :key="article._id" :path="article._path" :title="article.metaTitle" :description="article.description" :name:="article.name" :imgPath="article.imgPath"/>
+            <theCourse v-for="article in articles" :key="article.data.courseID" :title="article.data.metaTitle"
+                :description="article.data.description" :name="article.data.name" :imgPath="article.data.imgPath" />
         </div>
         <h2 class="text-5xl mb-10">
-           В прошлый раз вы остановились здесь:
+            В прошлый раз вы остановились здесь:
         </h2>
     </div>
 </template>
 
-<script setup>
-
-const articles = await queryContent('courses').only(['_id', '_path', "title", "meta", "metaTitle", "description", "name", "imgPath"]).find();
+<script setup lang="ts">
+useHead({
+    title: "Курсы"
+})
+const { data: lections, error } = await useAsyncData( "lections", () => $fetch('/api/lection/'))
+let ast = [];
+if (lections.value) {
+    for (let lection of lections.value){
+        ast.push(await parseMarkdown(lection as string))
+    }
+}
+const articles = ast.sort((a,b)=>a.data.course_id - b.data.course_id);
+console.log(articles);
 </script>

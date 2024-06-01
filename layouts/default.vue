@@ -21,7 +21,6 @@ const links = [{
     icon: 'i-heroicons-link'
 }]
 const route = useRoute();
-console.log(route.fullPath)
 </script>
 
 <style>
