@@ -35,11 +35,10 @@
 }
 body {
   /* font-family: "P22 Underground"; */
-  overflow-y: scroll; 
-  line-height: 1.15;
+  overflow-y: scroll;
+  line-height: 1;
   font-family: "Inter var experimental", "Inter var", "Inter", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
-
 ::selection {
   background: rgb(216, 216, 216) !important;
   color: #2c2c2c;

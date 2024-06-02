@@ -14,7 +14,7 @@ module.exports = {
         }
       },
       boxShadow: {
-        'darkShadow': '0 1px 3px 0 rgb(255 255 255 / 0.5), 0 1px 2px -1px rgb(255 255 255 / 0.5)',
+        'darkShadow': '0 1px 1px 0 rgb(255 255 255 / 0.5), 0 1px 2px -1px rgb(255 255 255 / 0.4)',
       }
     },
   },

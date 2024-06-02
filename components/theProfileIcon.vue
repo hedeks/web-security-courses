@@ -3,6 +3,7 @@ const store = userStore();
 const toast = useToast()
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
+import type { DropdownItem } from '../node_modules/@nuxt/ui/dist/runtime/types';
 onMounted(() => {
   if (user.value) {
     store.$state.isLoggedIn = true;
@@ -57,31 +58,29 @@ const items =
 </script>
 
 <template>
-  <div>
-    <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' } }"
-      :popper="{ placement: 'bottom-start' }">
-      <UAvatar v-if='store.$state.isLoggedIn' :alt="store.$state.userInfo.email" />
-      <UAvatar v-else icon="i-heroicons-exclamation-circle" size="sm" />
+  <UDropdown :items="items as DropdownItem[][]" :ui="{ item: { disabled: 'cursor-text select-text' } }"
+  :popper="{ placement: 'bottom-start', arrow: true }">
+    <UAvatar v-if='store.$state.isLoggedIn' :alt="store.$state.userInfo.email" />
+    <UAvatar v-else icon="i-heroicons-exclamation-circle" size="sm" />
 
-      <template #account="{ item }">
-        <div class="text-left">
-          <p v-if="store.$state.isLoggedIn">
-            Вошли как
-          </p>
-          <p v-if="store.$state.isLoggedIn" class="truncate font-medium text-gray-900 dark:text-white">
-            {{ item.label }}
-          </p>
-          <p v-else>
-            Вы не вошли в аккаунт
-          </p>
-        </div>
-      </template>
+    <template #account="{ item }">
+      <div class="text-left">
+        <p v-if="store.$state.isLoggedIn">
+          Вошли как
+        </p>
+        <p v-if="store.$state.isLoggedIn" class="truncate font-medium text-gray-900 dark:text-white">
+          {{ item.label }}
+        </p>
+        <p v-else>
+          Вы не вошли в аккаунт
+        </p>
+      </div>
+    </template>
 
-      <template #item="{ item }">
-        <span class="truncate">{{ item.label }}</span>
+    <template #item="{ item }">
+      <span class="truncate">{{ item.label }}</span>
 
-        <UIcon :name="item.icon" class="font flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto" />
-      </template>
-    </UDropdown>
-  </div>
+      <UIcon :name="item.icon" class="font flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto" />
+    </template>
+  </UDropdown>
 </template>

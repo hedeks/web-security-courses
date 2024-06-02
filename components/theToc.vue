@@ -28,9 +28,8 @@ const customScroll = (id: string) => {
     const offset = elem.getBoundingClientRect().top + scrollY - headerHeight;
     window.scrollTo({ top: offset, behavior: 'smooth' });
 }
-const activeElem = computed(() => {
-    return props.activeID
-})
+
+const activeElem = toRef(()=>props.activeID);
 watch(activeElem, () => {
     if (activeElem.value !== "") {
         const elements: HTMLCollectionOf<Element> = document.getElementsByClassName("toc");

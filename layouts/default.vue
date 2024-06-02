@@ -1,7 +1,7 @@
 <template>
     <div class="container max-w-8xl mx-auto flex-col">
-        <theHeader class="flex p-1 sticky top-0 bg-white dark:bg-gray-950 z-10" />
-        <main class="main flex flex-col p-10 items-center justify-items-center">
+        <theHeader class="flex w-full flex-wrap p-1 sticky top-0 bg-white dark:bg-gray-950 z-10" />
+        <main class="main flex flex-col w-full p-3 lg:p-10 items-center justify-items-center">
             <slot />
         </main>
         <theFooter class="flex p-1" />
@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+
 const links = [{
     label: 'Home',
     icon: 'i-heroicons-home',
@@ -27,8 +28,10 @@ const route = useRoute();
 :root {
     --footer-height: 93px;
 }
-
 .main {
     min-height: calc(100dvh - var(--header-height) - var(--footer-height));
+}
+.head {
+    backdrop-filter: blur(10px);
 }
 </style>
