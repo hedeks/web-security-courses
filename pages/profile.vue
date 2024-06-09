@@ -15,12 +15,14 @@ const options: Intl.DateTimeFormatOptions = {
 
 interface Roles {
     admin: string,
-    user: string
+    "преподаватель": string
+    "студент": string,
 }
 
 const roles: Roles = {
-    admin: "редактирование и удаление курсов",
-    user: "базовые возможности"
+    admin: "редактирование и удаление курсов, просмотр списка студентов",
+    "преподаватель": "редактирование и удаление курсов, просмотр списка студентов",
+    "студент": "прохождение курсов, редактирование профиля"
 }
 </script>
 
@@ -28,14 +30,14 @@ const roles: Roles = {
 <template>
     <UCard class="w-full min-h-full dark:shadow-darkShadow" :ui="{ background: 'bg-white dark:bg-gray-950' }">
         <template #header>
-            <h1 class="text-2xl font-bold">
+            <h1 class="text-3xl font-bold">
                 Ваш профиль
             </h1>
         </template>
-        <div class="flex flex-wrap justify-center">
+        <div class="flex flex-wrap justify-center w-full">
             <theAdministration />
-            <div id="information" class="flex col-span-1 justify-center py-2">
-                <UCard class="dark:shadow-darkShadow w-fit sm:w-full"
+            <div id="information" class="flex break-all col-span-1 justify-center py-2 w-fit max-w-full sm:w-sm lg:w-xl lg:max-w-xl">
+                <UCard class="dark:shadow-darkShadow w-fit w-full"
                     :ui="{ background: 'bg-white dark:bg-black', base: 'flex flex-col w-96' }">
                     <template #header>
                         <h2 class="text-xl font-bold text-center">
@@ -60,10 +62,11 @@ const roles: Roles = {
                             }}</span>
                         <span class="font-semibold">Ваши возможности на сайте:</span>
                         <span
-                            class="flex shadow-sm dark:shadow-darkShadow border text-sm px-2 py-1 rounded text-center">{{
+                            class="flex max-w-full flex-wrap text-wrap break-all shadow-sm dark:shadow-darkShadow border text-sm px-2 py-1 rounded text-center">
+                            {{
                                 roles[user?.role as
                                 keyof
-                            Roles] }}</span>
+                                Roles] }}</span>
                         <UButton icon="i-heroicons-pencil-square" block color="black"
                             class="mt-5 dark:shadow-darkShadow" variant="solid" label="Изменить" :loading="pending" />
                     </div>

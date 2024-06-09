@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-20 flex-wrap w-full lg:px-10">
-    <div id="firstView" v-for="item in [0,1,2]" :key="item" ref="firstView" class="view">
+    <div id="firstView" ref="firstView" class="view">
       <h1 :class="{'blured': isBlur}" class="ease-in-out duration-500 lg:text-6xl text-4xl font-bold text-center">
         Интерактивный &lt;<span class=" text-gray-600 dark:text-gray-400 uppercase">веб учебник</span>&gt;
         <br> для студентов

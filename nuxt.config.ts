@@ -61,6 +61,10 @@ export default defineNuxtConfig({
     classSuffix: 'selector'
   },
   content: {
+    ignores: [
+      '\<input\>',
+      '\<script\>'
+    ],
     markdown: {
       anchorLinks: false,
     },

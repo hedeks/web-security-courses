@@ -7,7 +7,11 @@
             class="flex flex-col-reverse lg:grid lg:grid-cols-10 gap-10 w-full lg:col-span-10 transition ease-in-out duration-500">
             <div class="sm:mw-full lg:w-auto lg:col-span-8 flex-col">
                 <ContentRendererMarkdown v-if="ast !== undefined" :value="ast"
-                    class="parent sm:mw-full lg:w-auto lg:col-span-8 flex-col bg-gray-50 dark:bg-gray-950 lg:p-10 p-5" />
+                    class="parent sm:mw-full lg:w-auto lg:col-span-8 flex-col bg-gray-50 dark:bg-gray-950 lg:p-10 p-5">
+                    <template #empty>
+                        <p>Не найдено контента</p>
+                    </template>
+                </ContentRendererMarkdown>
                 <toQuiz @changeView="changeView" class="mt-5 h-20">Перейти к тесту</toQuiz>
             </div>
             <theToc :activeID="activeID" v-if="ast?.toc?.links.length"
@@ -26,9 +30,18 @@ const activeID: Ref<string> = ref("");
 const isTheory = ref(true);
 const lection: Ref<HTMLElement | undefined> = ref();
 const quiz: Ref<HTMLElement | undefined> = ref();
-const observe = () => {
+
+const observe = (filteredElements: Element[]) => {
     const callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry: IntersectionObserverEntry) => {
+
+            if (!entry.isIntersecting && entry.boundingClientRect.y > 0 && entry.intersectionRatio > 0) {
+                let index = filteredElements.indexOf(entry.target);
+                if (index > 0) {
+                    activeID.value = filteredElements[index - 1].id;
+                }
+            }
+            console.log(entry)
             if (entry.isIntersecting) {
                 if (entry.target.id !== "") {
                     activeID.value = entry.target.id;
@@ -38,14 +51,11 @@ const observe = () => {
     }
     const observer = new IntersectionObserver(callback, {
         root: null,
-        threshold: 0.5
+        threshold: 1,
+        rootMargin: "0px 0px -65% 0px"
     })
-
-    const elements = document.querySelectorAll('h2, h3');
-    elements.forEach((item: Element) => {
-        if (item.parentElement?.classList.contains("parent")) {
-            observer.observe(item)
-        }
+    filteredElements.forEach((item: Element) => {
+        observer.observe(item)
     })
     return observer
 };
@@ -92,7 +102,14 @@ useSeoMeta({
     ogDescription: ast.value.data.description
 });
 onMounted(() => {
-    obs.value = observe();
+    const elements = document.querySelectorAll('h2, h3');
+    let filteredElements: Element[] = [];
+    elements.forEach((item) => {
+        if (item.parentElement?.classList.contains("parent") && item.id !== "") {
+            filteredElements.push(item);
+        }
+    })
+    obs.value = observe(filteredElements);
 })
 </script>
 
