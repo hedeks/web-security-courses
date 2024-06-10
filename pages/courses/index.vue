@@ -1,5 +1,5 @@
 <template>
-    <UCard class="w-full min-h-full dark:shadow-darkShadow" :ui="{ background: 'bg-white dark:bg-gray-950' }">
+    <UCard class="w-full min-h-full dark:shadow-darkShadow" :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-neutral-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
         <template #header>
             <h1 class="text-3xl font-bold">
                 Доступные курсы
@@ -10,7 +10,7 @@
                 <theCourse v-for="article in articles" :key="article.data.courseID" :title="article.data.metaTitle"
                     :description="article.data.description" :name="article.data.name" :imgPath="article.data.imgPath" />
             </div>
-            <hr class="w-full">
+            <hr class="w-full dark:border-gray-500">
             <h2 class="text-3xl font-bold w-full text-start">
                 В прошлый раз вы остановились здесь
             </h2>

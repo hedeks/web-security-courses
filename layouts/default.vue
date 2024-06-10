@@ -1,7 +1,7 @@
 <template>
     <div class="container max-w-8xl mx-auto flex-col">
-        <theHeader class="flex w-full flex-wrap p-1 sticky top-0 bg-white dark:bg-gray-950 z-10" />
-        <main class="main flex flex-col w-full p-3 lg:p-10 items-center justify-items-center">
+        <theHeader class="flex w-full flex-wrap p-1 sticky top-0 bg-white dark:bg-zinc-900 z-10" />
+        <main class="main flex flex-col w-full p-3 lg:p-10 items-center justify-items-center dark:bg-zinc-900 z-3">
             <slot />
         </main>
         <theFooter class="flex p-1" />

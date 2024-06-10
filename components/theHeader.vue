@@ -33,7 +33,7 @@ const links = [{
 
 <template>
   <div id="header" ref="header"
-    class="shadow rounded-br rounded-bl dark:shadow-darkShadow flex flex-wrap px-2 lg:grid lg:grid-cols-4 gap-2 items-center justify-center border-b dark:border-gray-700 border-gray-200">
+    class="rounded-br rounded-bl flex flex-wrap px-2 lg:grid lg:grid-cols-4 gap-2 items-center justify-center border-b dark:border-gray-500 border-gray-200 ">
     <theSiteLogo class="col-span-1" />
     <UHorizontalNavigation :links="links"
       :ui="{ container: 'flex items-center justify-center min-w-0 flex-wrap', label: 'xl:text-lg', active: 'after:bg-gray-500 dark:after:bg-gray-500-inverted' }"

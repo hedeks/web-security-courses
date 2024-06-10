@@ -50,7 +50,7 @@ const login = async (): Promise<void> => {
 
 <template>
     <div class="container m-auto w-full h-full flex flex-col items-center justify-center">
-        <UCard class="max-w-sm w-80 dark:shadow-darkShadow" :ui="{ background: 'bg-white dark:bg-gray-950' }">
+        <UCard class="max-w-sm w-80 dark:shadow-darkShadow" :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-neutral-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
             <template #header>
                 <div class="h-3 flex items-center justify-start text-xl font-bold">
                     <span v-if="isSignup">Регистрация</span>

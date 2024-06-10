@@ -1,13 +1,13 @@
 <template>
     <div
-        class="flex flex-col flex-wrap-reverse lg:grid lg:grid-cols-12 lg:flex-nowrap gap-10 prose max-w-none prose-pre:text-black dark:prose-pre:text-white xl:prose-lg md:prose-md prose-slate dark:prose-invert w-full prose-img:w-1/2 prose-img:mx-auto prose-img:h-auto prose-pre:bg-gray-100 prose-pre:border dark:prose-pre:border-gray-700 dark:prose-pre:bg-gray-800 prose-h1:font-semibold">
+        class="flex flex-col flex-wrap-reverse lg:grid lg:grid-cols-12 lg:flex-nowrap gap-10 prose max-w-none prose-pre:text-black dark:prose-pre:text-white xl:prose-lg md:prose-md prose-slate dark:prose-invert w-full prose-img:w-1/2 prose-img:mx-auto prose-img:h-auto prose-pre:bg-gray-100 prose-pre:border dark:prose-pre:border-gray-700 dark:prose-pre:bg-zinc-800 prose-h1:font-semibold">
         <theLeftQuizSelector @changeView="changeView" :is-theory="isTheory" :title="ast?.data.title"
             :quizTitle="ast?.data.metaTitle" class="lg:col-span-2 lg:flex lg:sticky top-[--header-height]" />
         <div :class="[{ 'active': isTheory }, { 'inactive': !isTheory }]" ref="lection"
             class="flex flex-col-reverse lg:grid lg:grid-cols-10 gap-10 w-full lg:col-span-10 transition ease-in-out duration-500">
             <div class="sm:mw-full lg:w-auto lg:col-span-8 flex-col">
                 <ContentRendererMarkdown v-if="ast !== undefined" :value="ast"
-                    class="parent sm:mw-full lg:w-auto lg:col-span-8 flex-col bg-gray-50 dark:bg-gray-950 lg:p-10 p-5">
+                    class="parent sm:mw-full lg:w-auto lg:col-span-8 flex-col bg-gray-50 dark:bg-black lg:p-10 p-5">
                     <template #empty>
                         <p>Не найдено контента</p>
                     </template>
@@ -18,9 +18,8 @@
                 class="lg:w-auto lg:col-span-2 lg:sticky top-[--header-height]" title="Содержание"
                 :links="ast?.toc.links" />
         </div>
-        <div :class="[{ 'active': !isTheory }, { 'inactive': isTheory }]" ref="quiz"
-            class="flex w-full lg:h-[calc(100dvh_-_var(--header-height)_-_5rem)] dark:bg-gray-950 bg-gray-50  items-center justify-center h-[calc(100dvh_-_var(--header-height)_-_1.5rem)] col-span-10 transition ease-in-out duration-500">
-            <pre class="h-full w-full overflow-y-scroll">{{ quizJson }}</pre>
+        <div :class="[{ 'active': !isTheory }, { 'inactive': isTheory }]" class="flex w-full lg:h-[calc(100dvh_-_var(--header-height)_-_5rem)] dark:bg-gray-950 bg-gray-50  items-center justify-center h-[calc(100dvh_-_var(--header-height)_-_1.5rem)] col-span-10 transition ease-in-out duration-500">
+            <theQuizView :quizJSON="quizJson" ref="quiz" />
         </div>
     </div>
 </template>
@@ -30,24 +29,23 @@ const activeID: Ref<string> = ref("");
 const isTheory = ref(true);
 const lection: Ref<HTMLElement | undefined> = ref();
 const quiz: Ref<HTMLElement | undefined> = ref();
-
+let isFirstObsCall = true;
 const observe = (filteredElements: Element[]) => {
     const callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry: IntersectionObserverEntry) => {
-
-            if (!entry.isIntersecting && entry.boundingClientRect.y > 0 && entry.intersectionRatio > 0) {
+            if (!entry.isIntersecting && entry.boundingClientRect.y > 0 && !isFirstObsCall) {
                 let index = filteredElements.indexOf(entry.target);
                 if (index > 0) {
                     activeID.value = filteredElements[index - 1].id;
                 }
             }
-            console.log(entry)
             if (entry.isIntersecting) {
                 if (entry.target.id !== "") {
                     activeID.value = entry.target.id;
                 }
             }
         })
+        isFirstObsCall = false;
     }
     const observer = new IntersectionObserver(callback, {
         root: null,
@@ -74,7 +72,6 @@ const changeView = (name: string) => {
         isTheory.value = true;
     }
     if (isTheory.value && currentPosition.value) {
-        console.log(currentPosition.value)
         nextTick(() => {
             scrollTo({ top: currentPosition.value })
         })

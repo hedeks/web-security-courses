@@ -18,6 +18,6 @@ const props = defineProps({
 
 <style scoped>
 .selectedToc {
-    @apply lg:border-r-2 lg:border-l-0 border-l-2 border-gray-950 dark:border-gray-200 bg-gray-200 dark:bg-gray-800;
+    @apply lg:border-r-2 lg:border-l-0 border-l-2 border-gray-950 dark:border-gray-200 bg-gray-200 dark:bg-zinc-800;
 }
 </style>

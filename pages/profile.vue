@@ -28,7 +28,7 @@ const roles: Roles = {
 
 
 <template>
-    <UCard class="w-full min-h-full dark:shadow-darkShadow" :ui="{ background: 'bg-white dark:bg-gray-950' }">
+    <UCard class="w-full min-h-full dark:shadow-darkShadow" :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-neutral-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
         <template #header>
             <h1 class="text-3xl font-bold">
                 Ваш профиль
@@ -38,7 +38,7 @@ const roles: Roles = {
             <theAdministration />
             <div id="information" class="flex break-all col-span-1 justify-center py-2 w-fit max-w-full sm:w-sm lg:w-xl lg:max-w-xl">
                 <UCard class="dark:shadow-darkShadow w-fit w-full"
-                    :ui="{ background: 'bg-white dark:bg-black', base: 'flex flex-col w-96' }">
+                    :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-stone-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
                     <template #header>
                         <h2 class="text-xl font-bold text-center">
                             Информация о вас
@@ -72,9 +72,9 @@ const roles: Roles = {
                     </div>
                 </UCard>
             </div>
-            <div id="stats" class="flex col-span-1 p-5 items-start h-full justify-center py-2">
+            <div id="stats" class="flex col-span-1 p-5 items-start h-full justify-center py-2 w-full">
                 <UCard class="text-center dark:shadow-darkShadow w-fit sm:w-full"
-                    :ui="{ background: 'bg-white dark:bg-black', base: 'flex flex-col w-96' }">
+                    :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-stone-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
                     <template #header>
                         <h2 class="text-xl text-center font-bold">
                             Статистика
@@ -82,9 +82,9 @@ const roles: Roles = {
                     </template>
                 </UCard>
             </div>
-            <div id="analitics" class="flex col-span-1 p-5 items-start h-full justify-center py-2">
+            <div id="analitics" class="flex col-span-1 p-5 items-start h-full justify-center py-2 w-full">
                 <UCard class="text-center dark:shadow-darkShadow w-fit sm:w-full"
-                    :ui="{ background: 'bg-white dark:bg-black', base: 'flex flex-col w-96' }">
+                   :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-stone-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
                     <template #header>
                         <h2 class="text-xl text-center font-bold">
                             Аналитика прохождения

@@ -8,25 +8,13 @@
       <p :class="{'blured': isBlur}" class="ease-in-out duration-300 text-center font-semibold text-md lg:text-lg text-gray-500 dark:text-gray-400">веб-учебник по междисциплинарному курсу "Обеспечение безопасности веб-приложений"
         <br> для обучающихся по специальности 09.02.07 "Информационные системы и программирование"
       </p>
-      <div @click="navigateTo('/courses')" @mouseover="isBlur = true" @mouseleave="isBlur = false" class="ease-in-out duration-500 flex hover:scale-105 hover:bg-white hover:dark:bg-black hover:border-black dark:hover:border-white hover:underline dark:border-gray-600 cursor-pointer shadow dark:shadow-darkShadow gap-5 py-3 px-5 w-sm border rounded bg-gray-100 dark:bg-gray-900 dark:border-gray-400">
+      <div @click="navigateTo('/courses')" @mouseover="isBlur = true" @mouseleave="isBlur = false" class="ease-in-out duration-500 flex hover:scale-105 hover:bg-white hover:dark:bg-black hover:border-black dark:hover:border-white hover:underline dark:border-gray-600 cursor-pointer shadow dark:shadow-darkShadow gap-5 py-3 px-5 w-sm border rounded bg-gray-100 dark:bg-stone-800 dark:border-gray-400">
         <span class="line-height">
           Приступить к изучению!
         </span>
         <UIcon :class="{'move': isBlur}" :name="'i-heroicons-arrow-right-circle'" class="ease-in-out duration-500 font flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto dark:invert" />
       </div>
     </div>
-    <!-- <div id="secondView" ref="secondView" class="view">
-      <h1>
-        Добро пожаловать
-      </h1>
-      <h2>Web Courses: курсы по веб безопасности для студентов ВГУИТ</h2>
-    </div>
-    <div id="thirdView" ref="thirdView" class="view">
-      <h1>
-        Добро пожаловать
-      </h1>
-      <h2>Web Courses: курсы по веб безопасности для студентов ВГУИТ</h2>
-    </div> -->
   </div>
 </template>
 

@@ -46,6 +46,6 @@ watch(activeElem, () => {
 
 <style scoped>
 .selectedToc {
-    @apply border-l-2 border-gray-950 dark:border-gray-200 bg-gray-200 dark:bg-gray-800;
+    @apply border-l-2 border-gray-950 dark:border-gray-200 bg-gray-200 dark:bg-zinc-800;
 }
 </style>

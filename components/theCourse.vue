@@ -10,7 +10,7 @@ const isShowDesc = ref(false);
 </script>
 
 <template>
-    <UCard class="lg:w-104 h-fit sm:w-sm dark:shadow-darkShadow" :ui="{ background: 'bg-white dark:bg-gray-950' }">
+    <UCard class="lg:w-104 h-fit sm:w-sm dark:shadow-darkShadow" :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-stone-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
         <template #header>
             <h2 class="text-lg text-center font-bold flex items-center justify-center">
                 {{ props.title }}
