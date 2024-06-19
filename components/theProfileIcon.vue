@@ -6,14 +6,14 @@ const user = useSupabaseUser();
 import type { DropdownItem } from '../node_modules/@nuxt/ui/dist/runtime/types';
 onMounted(() => {
   if (user.value) {
-    store.$state.isLoggedIn = true;
-    store.$state.userInfo = user.value
+    store.isLoggedIn = true;
+    store.userInfo = user.value
   } else {
-    store.$state.isLoggedIn = false;
+    store.isLoggedIn = false;
   }
 })
 const signOut = () => {
-  if (store.$state.isLoggedIn) {
+  if (store.isLoggedIn) {
     toast.add({ title: "Вы вышли из аккаунта!" })
     supabase.auth.signOut();
     store.$state.isLoggedIn = false;
@@ -25,7 +25,7 @@ const signOut = () => {
   }
 }
 const labelForDropDown = computed(() => {
-  if (store.$state.isLoggedIn) {
+  if (store.isLoggedIn) {
     return `Выйти`
   } else {
     return `Войти`
@@ -35,7 +35,7 @@ const items =
   computed(() => {
     return ([
       [{
-        label: store.$state.userInfo.email,
+        label: store.userInfo.email,
         slot: 'account',
         disabled: true
       }], [{
@@ -60,15 +60,15 @@ const items =
 <template>
   <UDropdown :items="items as DropdownItem[][]" :ui="{ item: { disabled: 'cursor-text select-text' } }"
   :popper="{ placement: 'bottom-start', arrow: true }">
-    <UAvatar v-if='store.$state.isLoggedIn' :alt="store.$state.userInfo.email" />
+    <UAvatar v-if='store.isLoggedIn' :alt="store.userInfo.email" />
     <UAvatar v-else icon="i-heroicons-exclamation-circle" size="sm" />
 
     <template #account="{ item }">
       <div class="text-left">
-        <p v-if="store.$state.isLoggedIn">
+        <p v-if="store.isLoggedIn">
           Вошли как
         </p>
-        <p v-if="store.$state.isLoggedIn" class="truncate font-medium text-gray-900 dark:text-white">
+        <p v-if="store.isLoggedIn" class="truncate font-medium text-gray-900 dark:text-white">
           {{ item.label }}
         </p>
         <p v-else>
