@@ -4,9 +4,13 @@ interface User {
     email?: string
 }
 
-export const userStore = defineStore('user', {
-    state: () => ({
-        userInfo: <User>{},
-        isLoggedIn: false
-    })
+export const userStore = defineStore('user', () => {
+    const userInfo: User = {};
+    const isLoggedIn = false;
+
+    
+    return{
+        userInfo,
+        isLoggedIn
+    }
 })

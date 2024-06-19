@@ -36,11 +36,10 @@
   filter: blur(0.1rem);
 }
 body {
-  /* font-family: "P22 Underground"; */
   @apply dark:bg-zinc-900;
   overflow-y: scroll;
   line-height: 1.15;
-  font-family: "Inter var experimental", "Inter var", "Inter", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Inter var experimental", "Inter var", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;;
 }
 ::selection {
   background: rgb(216, 216, 216) !important;
