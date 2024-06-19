@@ -16,7 +16,12 @@ const signUp = async (): Promise<void> => {
     });
     isLoading.value = false;
     if (user) {
-        toast.add({ title: `Подтвердите свой email ${user.email}` });
+        toast.add({ title: `Подтвердите свой email ${user.email}`, ui: {
+                background: 'bg-white dark:bg-neutral-900',
+                progress: {
+                    background: 'bg-black dark:bg-white',
+                }
+            } });
     }
     if (error) {
         errorMain.value = error;
@@ -33,7 +38,12 @@ const login = async (): Promise<void> => {
     });
     isLoading.value = false;
     if (user) {
-        toast.add({ title: `Вы вошли в аккаунт ${user.email}` });
+        toast.add({ title: `Вы вошли в аккаунт ${user.email}`, ui: {
+                background: 'bg-white dark:bg-neutral-900',
+                progress: {
+                    background: 'bg-black dark:bg-white',
+                }
+            } });
         navigateTo('/profile');
         store.$state.isLoggedIn = true;
         store.$state.userInfo = user;

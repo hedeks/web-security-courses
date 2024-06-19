@@ -1,13 +1,13 @@
 <template>
     <div
-        class="flex flex-col flex-wrap-reverse lg:grid lg:grid-cols-12 lg:flex-nowrap gap-10 prose max-w-none prose-pre:text-black dark:prose-pre:text-white xl:prose-lg md:prose-md prose-slate dark:prose-invert w-full prose-img:w-1/2 prose-img:mx-auto prose-img:h-auto prose-pre:bg-gray-100 prose-pre:border dark:prose-pre:border-gray-700 dark:prose-pre:bg-zinc-800 prose-h1:font-semibold">
+        class="flex flex-col flex-wrap-reverse lg:grid lg:grid-cols-12 lg:flex-nowrap gap-10 prose max-w-none prose-pre:text-black dark:prose-pre:text-white xl:prose-lg md:prose-md prose-slate dark:prose-invert w-full prose-img:w-1/2 prose-img:mx-auto prose-img:h-auto prose-pre:bg-gray-200 prose-pre:border dark:prose-pre:border-gray-700 dark:prose-pre:bg-zinc-900 prose-h1:font-semibold">
         <theLeftQuizSelector @changeView="changeView" :is-theory="isTheory" :title="ast?.data.title"
             :quizTitle="ast?.data.metaTitle" class="lg:col-span-2 lg:flex lg:sticky top-[--header-height]" />
         <div :class="[{ 'active': isTheory }, { 'inactive': !isTheory }]" ref="lection"
             class="flex flex-col-reverse lg:grid lg:grid-cols-10 gap-10 w-full lg:col-span-10 transition ease-in-out duration-500">
             <div class="sm:mw-full lg:w-auto lg:col-span-8 flex-col">
                 <ContentRendererMarkdown v-if="ast !== undefined" :value="ast"
-                    class="parent sm:mw-full lg:w-auto lg:col-span-8 flex-col bg-gray-50 dark:bg-black lg:p-10 p-5">
+                    class="parent sm:mw-full lg:w-auto lg:col-span-8 flex-col bg-gray-100 dark:bg-zinc-800 lg:p-10 p-5">
                     <template #empty>
                         <p>Не найдено контента</p>
                     </template>

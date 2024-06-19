@@ -3,7 +3,9 @@
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
-    <UNotifications />
+    <UNotifications color="gray" :ui="{progress: {
+       background: 'bg-black dark:bg-white',
+    }}"/>
   </div>
 </template>
 
@@ -14,7 +16,7 @@
 
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.4s;
+  transition: all 0.4s cubic-bezier(0.705,0.010,0.000,0.915);
 }
 
 .page-enter-from,

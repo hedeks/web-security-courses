@@ -1,4 +1,53 @@
 <script setup lang="ts">
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js'
+
+import type { ChartData } from 'chart.js';
+import { Bar } from 'vue-chartjs'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+import { ref } from 'vue';
+const chartData = ref<ChartData<'bar'>>({
+    labels: [
+        'Вайб',
+        'Льготы',
+        'Смысл жизни',
+        'Радость',
+        'Уважение от ПУТИНА',
+        'Прибыль',
+        'Респект'
+    ],
+    datasets: [
+        {
+            label: "НЕ СВО",
+            backgroundColor: "rgba(0,0,0,0.1)",
+            hoverBackgroundColor: "rgba(0,0,0,0.3)",
+            borderColor: "rgba(0,0,0,1)",
+            hoverBorderColor: "rgba(0,0,0,1)",
+            data: [10,20,10,20,5,7,8]
+        },
+        {
+            label: "СВО",
+            backgroundColor: "rgba(0,0,0,0.3)",
+            hoverBackgroundColor: "rgba(0,0,0,0.6)",
+            borderColor: "rgba(0,0,0,1)",
+            hoverBorderColor: "rgba(0,0,0,1)",
+            data: [100,100,100,100,100,100,100]
+        },
+    ]
+});
+const chartOptions = ref({
+    responsive: true,
+    maintainAspectRatio: false,
+});
 useHead({
     title: "Профиль"
 })
@@ -28,17 +77,30 @@ const roles: Roles = {
 
 
 <template>
-    <UCard class="w-full min-h-full dark:shadow-darkShadow" :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-neutral-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
+    <UCard class="w-full min-h-full dark:shadow-darkShadow"
+        :ui="{ ring: 'dark:ring-gray-500', divide: 'dark:divide-gray-500', background: 'bg-white dark:bg-neutral-900', header: { base: 'dark:bg-black rounded-xl bg-gray-50' } }">
         <template #header>
             <h1 class="text-3xl font-bold">
                 Ваш профиль
             </h1>
         </template>
         <div class="flex flex-wrap justify-center w-full">
+            <div id="stats" class="flex col-span-1 p-5 items-startz justify-center py-2 w-full">
+                <UCard class="text-center dark:shadow-darkShadow h-full w-fit sm:w-full"
+                    :ui="{ ring: 'dark:ring-gray-500', divide: 'dark:divide-gray-500', background: 'bg-gray-50 dark:bg-zinc-800', header: { base: 'dark:bg-black rounded-t-lg bg-gray-100' } }">
+                    <template #header>
+                        <h2 class="text-xl text-center font-bold">
+                            Статистика
+                        </h2>
+                    </template>
+                    <Bar :data="chartData" :options="chartOptions" class="h-96 w-full max-w-full" />
+                </UCard>
+            </div>
             <theAdministration />
-            <div id="information" class="flex break-all col-span-1 justify-center py-2 w-fit max-w-full sm:w-sm lg:w-xl lg:max-w-xl">
-                <UCard class="dark:shadow-darkShadow w-fit w-full"
-                    :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-stone-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
+            <div id="information"
+                class="flex break-all col-span-1 justify-center py-2 w-fit max-w-full sm:w-sm lg:w-xl lg:max-w-xl">
+                <UCard class="dark:shadow-darkShadow w-full"
+                    :ui="{ ring: 'dark:ring-gray-500', divide: 'dark:divide-gray-500', background: 'bg-gray-50 dark:bg-zinc-800', header: { base: 'dark:bg-black rounded-xl bg-gray-100' } }">
                     <template #header>
                         <h2 class="text-xl font-bold text-center">
                             Информация о вас
@@ -72,19 +134,9 @@ const roles: Roles = {
                     </div>
                 </UCard>
             </div>
-            <div id="stats" class="flex col-span-1 p-5 items-start h-full justify-center py-2 w-full">
-                <UCard class="text-center dark:shadow-darkShadow w-fit sm:w-full"
-                    :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-stone-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
-                    <template #header>
-                        <h2 class="text-xl text-center font-bold">
-                            Статистика
-                        </h2>
-                    </template>
-                </UCard>
-            </div>
             <div id="analitics" class="flex col-span-1 p-5 items-start h-full justify-center py-2 w-full">
                 <UCard class="text-center dark:shadow-darkShadow w-fit sm:w-full"
-                   :ui="{ ring:'dark:ring-gray-500', divide: 'dark:divide-gray-500' ,background: 'bg-white dark:bg-stone-900', header: {base: 'dark:bg-black rounded-xl bg-gray-50'} }">
+                    :ui="{ ring: 'dark:ring-gray-500', divide: 'dark:divide-gray-500', background: 'bg-white dark:bg-stone-900', header: { base: 'dark:bg-black rounded-xl bg-gray-50' } }">
                     <template #header>
                         <h2 class="text-xl text-center font-bold">
                             Аналитика прохождения

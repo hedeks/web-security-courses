@@ -24,7 +24,7 @@
             "id": 3,
             "question": "Каких тегов не существует в HTML5",
             "answers": ["article", "adress", "nav", "about"],
-            "rightAnswer": 4
+            "rightAnswer": 3
         }
     ]
 }
